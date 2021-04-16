@@ -62,3 +62,36 @@ var onMapClickHandler = function(event) {
 }
 // Enable map zooming with mouse scroll when the user clicks the map
 $('.map').on('click', onMapClickHandler);
+
+document.getElementById("myTextBox").addEventListener("keypress", function (event) {
+    var charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) {
+        event.preventDefault();
+    }
+});
+let nb = Math.trunc(Math.random() * 100);
+var attempt = 10;
+function test() {
+  console.log("test");
+  if (attempt == 0) {
+    document.getElementById("result").textContent = "Désolé vos 10 tentatives sont passées.";
+    return;
+  }
+  attempt -= 1;
+  var val = document.getElementById("myTextBox").value;
+  console.log("val=" + val)
+  if (val == nb) {
+    console.log("==");
+    document.getElementById("result").textContent = "Bravo tu as gagné!";
+  }
+  else if (val > nb) {
+    console.log(">");
+    document.getElementById("result").textContent = "Non c'est moins.";
+  }
+  else if (val < nb) {
+    console.log("<");
+    document.getElementById("result").textContent = "Non c'est plus.";
+  }
+}
+
+
